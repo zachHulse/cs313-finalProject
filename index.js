@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var bcrypt = require('bcrypt');
 require('dotenv').load();
+var user_id = -1;
 
 var pg = require("pg"); // This is the postgres database connection module.
 const connectionString = process.env.DATABASE_URL;
@@ -67,6 +68,7 @@ app.post('/signup', function(request, response) {
 					console.log("logging in");
   					request.session.username = username;
   					request.session.musician_id = result.rows[0].id;
+  					user_id =  result.rows[0].id;
   					request.session.save(); 
   					console.log(request.session);
   					response.json({success: true, redirect: '/practice.html'})
@@ -120,6 +122,7 @@ app.post('/login', function(request, response) {
     						console.log("logging in");
   							request.session.username = username;
   							request.session.musician_id = result.rows[0].id;
+  							user_id = result.rows[0].id;
   							request.session.save();			
   							console.log(request.session);
   							response.json({success: true, redirect: '/practice.html'})
@@ -168,8 +171,12 @@ app.post('/idea', function(request, response){
 					console.log(err);
   					response.json({success:  false, message: 'Error in query'});
 				}else{
+					if(!request.session.musician_id)
+						var id = user_id;
+					else
+						var id = request.session.musician_id;
 					sql = "insert into musician_link (musician_id, idea_id) values ($1, $2);";
-					params = [request.session.musician_id, result.rows[0].id];
+					params = [id, result.rows[0].id];
 					console.log(params); 
 					var query = client.query(sql, params, function(err, result){
 						// we are now done getting the data from the DB, disconnect the client
@@ -200,9 +207,13 @@ app.post('/practice', function(request, response){
 			console.log(err);
   			return response.json({ success: false, message: 'Error connecting to DB'});
 		}
+		if(!request.session.musician_id)
+			var id = user_id;
+		else
+			var id = request.session.musician_id;
 
 		var sql = "SELECT * FROM idea join musician_link on idea.id = musician_link.idea_id WHERE musician_link.musician_id = $1" ;
-		var params = [request.session.musician_id];
+		var params = [id];
 
 		var query = client.query(sql, params, function(err, result) {
 			console.log(result.rows)
