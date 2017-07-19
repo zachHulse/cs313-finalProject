@@ -14,8 +14,8 @@
 <ul>
     <% results.forEach(function(r) { %>
         <li><%= r.name %> - <%= r.descript %><br />
-            Time range: <%= r.min %> - <%= r.max %> minutes<br />
-            Instrument to be used: <%= r.instrument %> Category of practice: <%= r.category %></li><br  />
+            Time range: <%= r.min_time %> - <%= r.max_time %> minutes<br />
+            Instrument to be used: <%= r.instrument %> <br />Category of practice: <%= r.category %></li><br  />
     <% }); %>
 </ul>
 
