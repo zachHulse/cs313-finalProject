@@ -9,11 +9,13 @@
 <% include ../partials/nav.ejs %>
 
 <div class="container">
-<h2>Database Results</h2>
+<h2>Your Practice Ideas</h2>
 
 <ul>
     <% results.forEach(function(r) { %>
-        <li><%= r.id %> - <%= r.name %></li>
+        <li><%= r.name %> - <%= r.descript %><br />
+            Time range: <%= r.min %> - <%= r.max %> minutes<br />
+            Instrument to be used: <%= r.instrument %> Category of practice: <%= r.category %></li><br  />
     <% }); %>
 </ul>
 

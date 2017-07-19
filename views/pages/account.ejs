@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Account</title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous">
+    </script>
+    <script src="account.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/account.css">
+  </head>
+<body>
+
+<h2>Get Started</h2>
+
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
+
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="">
+
+    <div class="container">
+      <label><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" id="username" required>
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="password" required>
+        
+      <button type="button" onclick="login(); document.getElementById('id01').style.display='none';">Login</button>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <button type="button" onclick="document.getElementById('id03').style.display='block'" class="psw">Forgot password?</button>
+    </div>
+  </form>
+</div>
+
+<div id="id02" class="modal">
+  
+  <form class="modal-content animate" action="">
+
+    <div class="container">
+      <label><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+	    <label><b>Email</b></label>
+      <input type="text" placeholder="Enter Email for Account Recovery" name="email" id="email" required>      
+        
+      <button type="button" onclick="signup(); document.getElementById('id02').style.display='none';">Sign Up</button>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<i id="status"></i>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+var modal2 = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function close (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    else if(event.target == modal2){
+    	modal2.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>

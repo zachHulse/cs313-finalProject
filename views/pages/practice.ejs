@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Idea</title>
+  <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous">
+    </script>
+    <script src="account.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+
+<button type="button" id="logout" onclick="logout()">Logout</button>
+<p id="status"></p>
+
+<h2>Enter a Practice Idea</h2>
+<form id="form">
+<div class="row well">
+  <div class="col-md-4">
+    <label><b>Name</b></label><br />
+    <input type="text" name="name" id="name" required><br />
+  </div>
+  <div class="col-md-4">
+   <label><b>Description</b></label><br />  
+   <textarea rows="4" cols="50" id="description" required></textarea><br /><br />
+  </div>
+</div>
+
+<div class="row well">
+  <div class="col-md-4">
+   <label><b>Minimum Amount of Practice Time</b></label><br />
+   <select id="min" required>
+    <option> </option>
+      <option value="15">15 minutes</option>
+      <option value="30">30 minutes</option>
+      <option value="45">45 minutes</option>
+      <option value="60">1 hour</option>
+   </select><br />
+  </div>
+
+  <div class="col-md-4">
+   <label><b>Maximum Amount of Practice Time</b></label><br />
+   <select id="max" required>
+    <option> </option>
+      <option value="15">15 minutes</option>
+      <option value="30">30 minutes</option>
+      <option value="45">45 minutes</option>
+      <option value="60">1 hour</option>
+      <option value="90">1.5 hours</option>
+      <option value="120">2 hours</option>
+   </select><br />
+  </div>
+</div>
+
+<div class="row well">
+  <div class="col-md-4">
+   <label><b>Instrument</b></label><br />
+   <select id="instrument" required>
+    <option> </option>
+      <option value="Piano">Piano</option>
+      <option value="Guitar">Guitar</option>
+      <option value="Drums">Drums</option>
+      <option value="Voice">Voice</option>
+      <option value="Brass">Brass</option>
+      <option value="Wind">Wind</option>
+   </select><br />
+  </div>
+
+  <div class="col-md-4">
+   <label><b>Category</b></label><br />
+   <select id="category" required>
+    <option> </option>
+      <option value="Technique">Technique</option>
+      <option value="Music">Music</option>
+      <option value="Timing">Timing</option>
+   </select><br /><br />
+  </div>
+</div>
+<button type="button" id="idea" onclick="idea()">Save Idea</button>
+<button type="button" id="practice" onclick="practice()">View Practice Ideas</button>
+</form>
+</body>
+</html>
